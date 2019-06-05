@@ -12,7 +12,7 @@ class CcclConan(ConanFile):
     url = "https://www.github.com/bincrafters/conan-cccl"
     homepage = "https://github.com/swig/cccl/"
     author = "Bincrafters <bincrafters@gmail.com>"
-    license = "GPL-3"
+    license = "GPL-3.0-or-later"
     exports = ["LICENSE.md"]
     no_copy_source = True
     options = {
