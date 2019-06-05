@@ -7,13 +7,13 @@ import os
 class CcclConan(ConanFile):
     name = "cccl_installer"
     version = "1.0"
-    license = "GPL-3"
+    description = "Unix cc compiler to Microsoft's cl compiler wrapper"
+    topics = ("conan", "msvc", "Visual Studio", "wrapper", "gcc")
     url = "https://www.github.com/bincrafters/conan-cccl"
     homepage = "https://github.com/swig/cccl/"
     author = "Bincrafters <bincrafters@gmail.com>"
-    description = "Unix cc compiler to Microsoft's cl compiler wrapper"
-    topics = ("conan", "msvc", "Visual Studio", "wrapper", "gcc")
-    exports = ["LICENSE.md", ]
+    license = "GPL-3"
+    exports = ["LICENSE.md"]
     no_copy_source = True
     options = {
         "muffle": [True, False],
@@ -26,11 +26,6 @@ class CcclConan(ConanFile):
     settings = "compiler",
 
     _source_subfolder = "source_subfolder"
-
-    def package_id(self):
-        del self.info.settings.compiler
-        del self.info.options.muffle
-        del self.info.options.verbose
 
     def source(self):
         filename = "cccl-{}.tar.gz".format(self.version)
@@ -58,8 +53,13 @@ class CcclConan(ConanFile):
                               "    -L*)")
 
     def package(self):
-        self.copy("cccl", src=os.path.join(self.source_folder, self._source_subfolder), dst="bin")
         self.copy("COPYING", src=os.path.join(self.source_folder, self._source_subfolder), dst="licenses")
+        self.copy("cccl", src=os.path.join(self.source_folder, self._source_subfolder), dst="bin")
+
+    def package_id(self):
+        del self.info.settings.compiler
+        del self.info.options.muffle
+        del self.info.options.verbose
 
     def package_info(self):
         if self.settings.compiler != "Visual Studio":
