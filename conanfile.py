@@ -8,7 +8,7 @@ class CcclConan(ConanFile):
     name = "cccl_installer"
     version = "1.0"
     description = "Unix cc compiler to Microsoft's cl compiler wrapper"
-    topics = ("conan", "msvc", "Visual Studio", "wrapper", "gcc")
+    topics = ("conan", "msvc", "visual-studio", "wrapper", "gcc")
     url = "https://www.github.com/bincrafters/conan-cccl"
     homepage = "https://github.com/swig/cccl/"
     author = "Bincrafters <bincrafters@gmail.com>"
